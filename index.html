@@ -4,26 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista Lezioni</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+
 </head>
 <body>
-    <div class="container">
-        <h1 class="mt-5 mb-4">Lista Lezioni</h1>
-        <form id="lessonForm" class="mb-4">
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <input type="text" class="form-control" id="titleInput" placeholder="Titolo lezione">
-                </div>
-                <div class="col-md-6">
-                    <input type="text" class="form-control" id="descriptionInput" placeholder="Descrizione lezione">
-                </div>
-                <div class="col-md-12">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Lista Lezioni</h1>
+        <div class="card">
+            <div class="card-body">
+                <form id="lessonForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="titleInput" placeholder="Titolo lezione">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="descriptionInput" placeholder="Descrizione lezione">
+                    </div>
                     <button type="submit" class="btn btn-primary">Aggiungi</button>
-                </div>
+                </form>
             </div>
-        </form>
-        <ul id="lessonList" class="list-group"></ul>
+        </div>
+        <ul id="lessonList" class="mt-4"></ul>
     </div>
 
     <script src="script.js"></script>
