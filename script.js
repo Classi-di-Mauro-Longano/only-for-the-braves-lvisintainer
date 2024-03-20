@@ -100,3 +100,21 @@ document.addEventListener('DOMContentLoaded', function() {
         lessons.forEach(lesson => addLesson(lesson));
     }
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const clock = document.getElementById('clock');
+    
+    // Funzione per aggiornare l'ora
+    function updateClock() {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const timeString = hours + ':' + minutes;
+        clock.textContent = timeString;
+    }
+
+    // Chiama updateClock() al caricamento della pagina e ogni minuto
+    updateClock();
+    setInterval(updateClock, 60000); // Ogni minuto (60000 millisecondi)
+});

@@ -6,25 +6,12 @@
     <title>Lista Lezioni</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" href="img/favicon.png" type="image/x-icon">
-    <style>
-        .animated {
-            animation: fadeIn 1s ease-out;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-    </style>
 </head>
 <body class="bg-light">
     <div class="container mt-5">
-        <h1 class="text-center mb-4 text-primary">Lista Lezioni</h1>
+        <h1 class="text-center mb-4 text-primary">Lista Lezioni <span id="clock" class="float-right mr-3"></span></h1>
         <div class="card mb-4 animated">
-            <div class="card-body">
+            <div class="card-body">  
                 <form id="lessonForm">
                     <div class="form-row">
                         <div class="form-group col-md-4">
@@ -76,6 +63,7 @@
                                 <th scope="col">Data</th>
                                 <th scope="col">Ora</th>
                             </tr>
+                        </thead>
                         <tbody id="doneLessonList"></tbody>
                     </table>
                 </div>
@@ -86,4 +74,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
