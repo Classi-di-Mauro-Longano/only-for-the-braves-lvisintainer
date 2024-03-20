@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const lessonForm = document.getElementById('lessonForm');
     const titleInput = document.getElementById('titleInput');
     const descriptionInput = document.getElementById('descriptionInput');
+    const dateInput = document.getElementById('dateInput');
+    const timeInput = document.getElementById('timeInput');
     const lessonList = document.getElementById('lessonList');
 
     // Carica le lezioni salvate al caricamento della pagina
@@ -12,28 +14,34 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         const title = titleInput.value.trim();
         const description = descriptionInput.value.trim();
-        if (title !== '' && description !== '') {
+        const date = dateInput.value;
+        const time = timeInput.value;
+        if (title !== '' && description !== '' && date !== '' && time !== '') {
             const lesson = {
                 title: title,
                 description: description,
-                date: new Date().toLocaleDateString()
+                date: date,
+                time: time
             };
             addLesson(lesson);
             saveLesson(lesson);
             titleInput.value = '';
             descriptionInput.value = '';
+            dateInput.value = '';
+            timeInput.value = '';
         }
     });
 
-    // Aggiungi una lezione alla lista
+    // Aggiungi una lezione alla tabella
     function addLesson(lesson) {
-        const li = document.createElement('li');
-        li.innerHTML = `
-            <strong>${lesson.title}</strong><br>
-            <span>${lesson.description}</span><br>
-            <span>Data: ${lesson.date}</span>
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${lesson.title}</td>
+            <td>${lesson.description}</td>
+            <td>${lesson.date}</td>
+            <td>${lesson.time}</td>
         `;
-        lessonList.appendChild(li);
+        lessonList.appendChild(row);
     }
 
     // Salva una lezione nel localStorage

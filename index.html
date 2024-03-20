@@ -6,25 +6,45 @@
     <title>Lista Lezioni</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" href="img/favicon.png" type="image/x-icon">
-
 </head>
 <body>
     <div class="container mt-5">
         <h1 class="text-center mb-4">Lista Lezioni</h1>
-        <div class="card">
+        <div class="card mb-4">
             <div class="card-body">
                 <form id="lessonForm">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="titleInput" placeholder="Titolo lezione">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="descriptionInput" placeholder="Descrizione lezione">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" id="titleInput" placeholder="Titolo lezione">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" id="descriptionInput" placeholder="Descrizione lezione">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <input type="date" class="form-control" id="dateInput">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <input type="time" class="form-control" id="timeInput">
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Aggiungi</button>
                 </form>
             </div>
         </div>
-        <ul id="lessonList" class="mt-4"></ul>
+        <h2 class="mt-4">Elenco Lezioni</h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Titolo</th>
+                        <th scope="col">Descrizione</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Ora</th>
+                    </tr>
+                </thead>
+                <tbody id="lessonList"></tbody>
+            </table>
+        </div>
     </div>
 
     <script src="script.js"></script>
