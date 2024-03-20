@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const dateError = document.getElementById('dateError');
     const timeError = document.getElementById('timeError');
     const lessonList = document.getElementById('lessonList');
+    const doneLessonList = document.getElementById('doneLessonList');
 
     // Carica le lezioni salvate al caricamento della pagina
     loadLessons();
@@ -49,17 +50,26 @@ document.addEventListener('DOMContentLoaded', function() {
     function addLesson(lesson) {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td><input type="checkbox" class="form-check-input" id="doneCheckbox_${lesson.date}_${lesson.time}" ${lesson.done ? 'checked' : ''}></td>
+            <td><input type="checkbox" class="form-check-input doneCheckbox" id="doneCheckbox_${lesson.date}_${lesson.time}" ${lesson.done ? 'checked' : ''}></td>
             <td>${lesson.title}</td>
-           
             <td>${lesson.description}</td>
             <td>${lesson.date}</td>
             <td>${lesson.time}</td>
         `;
-        lessonList.appendChild(row);
-        const doneCheckbox = document.getElementById(`doneCheckbox_${lesson.date}_${lesson.time}`);
+        if (lesson.done) {
+            doneLessonList.appendChild(row);
+        } else {
+            lessonList.appendChild(row);
+        }
+        
+        const doneCheckbox = row.querySelector('.doneCheckbox');
         doneCheckbox.addEventListener('change', function() {
             lesson.done = !lesson.done;
+            if (lesson.done) {
+                doneLessonList.appendChild(row);
+            } else {
+                lessonList.appendChild(row);
+            }
             saveLessonStatus(lesson);
         });
     }
@@ -84,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Carica le lezioni salvate
-    function loadLessons() {
+    function loadLessons() {      
         let lessons = localStorage.getItem('lessons');
         lessons = lessons ? JSON.parse(lessons) : [];
         lessons.forEach(lesson => addLesson(lesson));
