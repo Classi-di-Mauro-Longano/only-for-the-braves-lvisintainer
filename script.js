@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         const title = titleInput.value.trim();
         const description = descriptionInput.value.trim();
-        const date = dateInput.value || new Date().toISOString().split('T')[0];
-        const time = timeInput.value || new Date().toISOString().split('T')[1].slice(0, 5);
+        const date = dateInput.value || new Date(new Date().getTime() + (60 * 60 * 1000)).toISOString().split('T')[0];
+        const time = timeInput.value || new Date(new Date().getTime() + (60 * 60 * 1000)).toISOString().split('T')[1].slice(0, 5);
         
         // Resetta i messaggi di errore
         titleError.textContent = '';

@@ -6,11 +6,24 @@
     <title>Lista Lezioni</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <style>
+        .animated {
+            animation: fadeIn 1s ease-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
-<body>
+<body class="bg-light">
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Lista Lezioni</h1>
-        <div class="card mb-4">
+        <h1 class="text-center mb-4 text-primary">Lista Lezioni</h1>
+        <div class="card mb-4 animated">
             <div class="card-body">
                 <form id="lessonForm">
                     <div class="form-row">
@@ -30,41 +43,47 @@
                             <p id="timeError" class="text-danger"></p>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Aggiungi</button>
+                    <button type="submit" class="btn btn-primary btn-block">Aggiungi</button>
                 </form>
             </div>
         </div>
-        <h2 class="mt-4">Elenco Lezioni</h2>
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Fatto</th>
-                        <th scope="col">Titolo</th>
-                        <th scope="col">Descrizione</th>
-                        <th scope="col">Data</th>
-                        <th scope="col">Ora</th>
-                    </tr>
-                </thead>
-                <tbody id="lessonList"></tbody>
-            </table>
-        </div>
-        <h2 class="mt-4">Lezioni Già Fatte</h2>
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Titolo</th>
-                        <th scope="col">Descrizione</th>
-                        <th scope="col">Data</th>
-                        <th scope="col">Ora</th>
-                    </tr>
-                </thead>
-                <tbody id="doneLessonList"></tbody>
-            </table>
+        <div class="row animated">
+            <div class="col-md-6">
+                <h2 class="mt-4 text-primary">Elenco Lezioni</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Fatto</th>
+                                <th scope="col">Titolo</th>
+                                <th scope="col">Descrizione</th>
+                                <th scope="col">Data</th>
+                                <th scope="col">Ora</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lessonList"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2 class="mt-4 text-primary">Lezioni Già Fatte</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Titolo</th>
+                                <th scope="col">Descrizione</th>
+                                <th scope="col">Data</th>
+                                <th scope="col">Ora</th>
+                            </tr>
+                        <tbody id="doneLessonList"></tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+
