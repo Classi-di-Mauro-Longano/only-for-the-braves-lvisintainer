@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista Lezioni</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Lista Lezioni</h1>
-        <form id="lessonForm">
-            <input type="text" id="titleInput" placeholder="Titolo lezione">
-            <input type="text" id="descriptionInput" placeholder="Descrizione lezione">
-            <button type="submit">Aggiungi</button>
+        <h1 class="mt-5 mb-4">Lista Lezioni</h1>
+        <form id="lessonForm" class="mb-4">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="titleInput" placeholder="Titolo lezione">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="descriptionInput" placeholder="Descrizione lezione">
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary">Aggiungi</button>
+                </div>
+            </div>
         </form>
-        <ul id="lessonList"></ul>
+        <ul id="lessonList" class="list-group"></ul>
     </div>
 
     <script src="script.js"></script>
