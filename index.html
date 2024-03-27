@@ -9,24 +9,24 @@
 </head>
 <body class="bg-light">
     <div class="container mt-5">
-        <h1 class="text-center mb-4 text-primary">Lista Lezioni <span id="clock" class="float-right mr-3"></span></h1>
+        <h1 class="text-center mb-4 text-primary">Lista Lezioni <span hx-get="/clock" hx-trigger="load" hx-swap="innerHTML" hx-target="#clock"></span></h1>
         <div class="card mb-4 animated">
             <div class="card-body">  
-                <form id="lessonForm">
+                <form id="lessonForm" hx-post="/add-lesson" hx-trigger="submit" hx-swap="outerHTML" hx-target="#lessonForm">
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <input type="text" class="form-control" id="titleInput" placeholder="Titolo lezione">
+                            <input type="text" class="form-control" id="titleInput" placeholder="Titolo lezione" name="title">
                             <p id="titleError" class="text-danger"></p>
                         </div>
                         <div class="form-group col-md-4">
-                            <input type="text" class="form-control" id="descriptionInput" placeholder="Descrizione lezione">
+                            <input type="text" class="form-control" id="descriptionInput" placeholder="Descrizione lezione" name="description">
                         </div>
                         <div class="form-group col-md-2">
-                            <input type="date" class="form-control" id="dateInput">
+                            <input type="date" class="form-control" id="dateInput" name="date">
                             <p id="dateError" class="text-danger"></p>
                         </div>
                         <div class="form-group col-md-2">
-                            <input type="time" class="form-control" id="timeInput">
+                            <input type="time" class="form-control" id="timeInput" name="time">
                             <p id="timeError" class="text-danger"></p>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                 </form>
             </div>
         </div>
-        <div class="row animated">
+        <div class="row animated" hx-get="/load-lessons" hx-trigger="load" hx-swap="innerHTML" hx-target=".row.animated">
             <div class="col-md-6">
                 <h2 class="mt-4 text-primary">Elenco Lezioni</h2>
                 <div class="table-responsive">
@@ -71,6 +71,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org/dist/htmx.js"></script>
 </body>
 </html>
