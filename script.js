@@ -46,33 +46,52 @@ document.addEventListener('DOMContentLoaded', function() {
         timeInput.value = '';
     });
 
-    // Aggiungi una lezione alla tabella
-    function addLesson(lesson) {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td><input type="checkbox" class="form-check-input doneCheckbox" id="doneCheckbox_${lesson.date}_${lesson.time}" ${lesson.done ? 'checked' : ''}></td>
-            <td>${lesson.title}</td>
-            <td>${lesson.description}</td>
-            <td>${lesson.date}</td>
-            <td>${lesson.time}</td>
-        `;
+// Aggiungi una lezione alla tabella
+function addLesson(lesson) {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td><input type="checkbox" class="form-check-input doneCheckbox" id="doneCheckbox_${lesson.date}_${lesson.time}" ${lesson.done ? 'checked' : ''}></td>
+        <td>${lesson.title}</td>
+        <td>${lesson.description}</td>
+        <td>${lesson.date}</td>
+        <td>${lesson.time}</td>
+        <td><button class="btn btn-danger btn-sm deleteLesson"><i class="fas fa-trash-alt"></i></button></td>
+    `;
+    if (lesson.done) {
+        doneLessonList.appendChild(row);
+    } else {
+        lessonList.appendChild(row);
+    }
+    
+    const doneCheckbox = row.querySelector('.doneCheckbox');
+    doneCheckbox.addEventListener('change', function() {
+        lesson.done = !lesson.done;
         if (lesson.done) {
             doneLessonList.appendChild(row);
         } else {
             lessonList.appendChild(row);
         }
-        
-        const doneCheckbox = row.querySelector('.doneCheckbox');
-        doneCheckbox.addEventListener('change', function() {
-            lesson.done = !lesson.done;
-            if (lesson.done) {
-                doneLessonList.appendChild(row);
-            } else {
-                lessonList.appendChild(row);
-            }
-            saveLessonStatus(lesson);
-        });
-    }
+        saveLessonStatus(lesson);
+    });
+
+    const deleteButton = row.querySelector('.deleteLesson');
+    deleteButton.addEventListener('click', function() {
+        if (confirm('Sei sicuro di voler eliminare questa lezione?')) {
+            row.remove();
+            removeLesson(lesson);
+        }
+    });
+}
+
+
+// Rimuovi una lezione dal localStorage
+function removeLesson(lessonToRemove) {
+    let lessons = localStorage.getItem('lessons');
+    lessons = lessons ? JSON.parse(lessons) : [];
+    const updatedLessons = lessons.filter(lesson => !(lesson.date === lessonToRemove.date && lesson.time === lessonToRemove.time));
+    localStorage.setItem('lessons', JSON.stringify(updatedLessons));
+}
+
 
     // Salva una lezione nel localStorage
     function saveLesson(lesson) {
@@ -118,3 +137,6 @@ document.addEventListener('DOMContentLoaded', function() {
     updateClock();
     setInterval(updateClock, 60000); // Ogni minuto (60000 millisecondi)
 });
+
+
+
