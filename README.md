@@ -12,6 +12,7 @@ Questa applicazione ti consente di aggiungere lezioni con titolo, descrizione, d
 - Visualizzazione delle lezioni da fare e delle lezioni già fatte.
 - Spunta delle lezioni già fatte per spostarle nella sezione delle lezioni completate.
 - Memorizzazione locale delle lezioni utilizzando il localStorage del browser.
+- Eliminazione delle singole lezioni
 
 ## Tecnologie utilizzate
 
